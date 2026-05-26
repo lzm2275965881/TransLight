@@ -136,21 +136,19 @@
   </div>
 </section>
 
-<!-- <section class="hero teaser">
+<section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
+        <source src="./static/videos/TransLight_demo.mp4"
                 type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
+        <span class="dnerf">T</span>ransfer light effect from a reference image to a user input image.
       </h2>
     </div>
   </div>
-</section> -->
+</section>
 
 
 <!-- <section class="hero is-light is-small">
@@ -243,10 +241,10 @@
 </section>
 
 
-<!-- <section class="section">
+<section class="section">
   <div class="container is-max-desktop">
 
-    <div class="columns is-centered">
+    <!-- <div class="columns is-centered">
 
       <div class="column">
         <div class="content">
@@ -278,9 +276,139 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-2">Generative Decoupling</h2>
+        <div class="content has-text-justified">
+          <p>
+            We use two diffusion models to decouple the image content and light effects, which we refer to as generative decoupling.
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <img src="./static/images/generative_decoupling.jpg"
+                class="interpolation-image"
+                alt="Interpolation end reference image."/>
+          <!-- <p class="is-bold">End Frame</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Visualizations of Generative Decoupling</h2>
+        <!-- <div class="content has-text-justified">
+          <p>
+            We use two diffusion models to decouple the image content and light effects, which we refer to as generative decoupling.
+          </p>
+        </div> -->
+        <div class="columns is-centered">
+          <img src="./static/images/generative_decoupling_vis.png"
+                class="interpolation-image"
+                style="width: 800px; height: auto;"
+                alt="Interpolation end reference image."/>
+          <!-- <p class="is-bold">End Frame</p> -->
+        </div>
+        <div class="columns is-centered">
+          <img src="./static/images/generative_decoupling_vis_sup.png"
+                class="interpolation-image"
+                style="width: 800px; height: auto;"
+                alt="Interpolation end reference image."/>
+          <!-- <p class="is-bold">End Frame</p> -->
+        </div>
+      </div>
+    </div>
+    <br><br><br><br>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-2">TransLight</h2>
+        <div class="content has-text-justified">
+          <p>
+            Overall framwork. (a) We fine-tune two diffusion models initialized with the weights of IC-Light. During training, the input
+            synthesized image IS is the direct addition result of no light image I and light material image L. (b) This pipeline involves selecting
+            relevant data using a vision language model, decoupling image content and lighting via light removal and extraction models, and filtering
+            out poor generation results. (c) Our TransLight training consists of two stages: LoRA fine-tuning for content-preserving lighting editing
+            and ControlNet training to inject light effects.
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <img src="./static/images/whole_pipeline.png"
+                class="interpolation-image"
+                alt="Interpolation end reference image."/>
+          <!-- <p class="is-bold">End Frame</p> -->
+        </div>
+      </div>
+    </div>
+
+    <br><br><br><br>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-2">Triplets</h2>
+        <div class="content has-text-justified">
+          <p>
+            We obtain 1 million triplets using our data construction pipeline. We categorize all triplets in our dataset into nine light-effect types: 1.Light Beam in Tyndall Effect; 2.Dappled Light;
+            3.Backlighting Effect; 4.Iridescent Halo; 5.Lens Flare; 6.Bright Light Source; 7.Gleaming Water Reflection; 8.Projected
+            Light Patch; 9.Volumetric Light Rays. 
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <img src="./static/images/light_effect_distribution.png"
+                class="interpolation-image"
+                alt="Interpolation end reference image."/>
+          <!-- <p class="is-bold">End Frame</p> -->
+        </div>
+        <div class="columns is-centered">
+          <img src="./static/images/Data_distribution_category_vis.png"
+                class="interpolation-image"
+                alt="Interpolation end reference image."/>
+          <!-- <p class="is-bold">End Frame</p> -->
+        </div>
+      </div>
+    </div>
+
+    <br><br><br><br>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-2">Visualizations of TransLight</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our TransLight tackles this challenging task through
+            generative decoupling. We extract the light effect from the reference image using our fine-tuned model and composite it onto the target
+            image, enabling flexible control over position and direction for realistic, high-freedom results.
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <img src="./static/images/first_page_vis.png"
+                class="interpolation-image"
+                alt="Interpolation end reference image."/>
+          <!-- <p class="is-bold">End Frame</p> -->
+        </div>
+        <div class="content has-text-justified">
+          <!-- <p>
+            Our TransLight tackles this challenging task through
+            generative decoupling. We extract the light effect from the reference image using our fine-tuned model and composite it onto the target
+            image, enabling flexible control over position and direction for realistic, high-freedom results.
+          </p> -->
+        </div>
+        <div class="columns is-centered">
+          <img src="./static/images/TransLight_vis_first_page.png"
+                class="interpolation-image"
+                alt="Interpolation end reference image."/>
+          <!-- <p class="is-bold">End Frame</p> -->
+        </div>
+        <div class="columns is-centered">
+          <img src="./static/images/visualization_comparision.png"
+                class="interpolation-image"
+                alt="Interpolation end reference image."/>
+          <!-- <p class="is-bold">End Frame</p> -->
+        </div>
+      </div>
+    </div>
+
+  <!-- </div> -->
+
+
+    <!-- <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Animation</h2>
 
@@ -336,10 +464,10 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
 
 
-    <div class="columns is-centered">
+    <!-- <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Related Links</h2>
 
@@ -362,10 +490,10 @@
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
 
   </div>
-</section> -->
+</section>
 
 
 <section class="section" id="BibTeX">
